@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 🚨 Google Analytics (GA4) - Tourmaker 통합 관리 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLH9GD9SVR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JLH9GD9SVR');
+    </script>
+    <!-- // Google Analytics 끝 -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정선군청 경제과: 북큐슈 선진지 견학 스마트 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        
+        /* Hero Background: Yufuin or Fukuoka vibe */
+        .hero-bg-kyushu { 
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(30, 58, 138, 0.7)), url('https://images.unsplash.com/photo-1572978351333-6c845b4dd52b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        } 
+        
+        /* Interactive Elements */
+        .nav-link { transition: all 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #f59e0b; border-bottom-color: #f59e0b; }
+        
+        .tab-btn { transition: all 0.3s; }
+        .tab-btn.active { background-color: #0ea5e9; color: white; border-color: #0ea5e9; }
+        
+        /* Timeline Styling */
+        .timeline-item::before { content: ''; position: absolute; left: 11px; top: 12px; bottom: -12px; width: 2px; background-color: #cbd5e1; }
+        .timeline-item:last-child::before { display: none; }
+        
+        html { scroll-behavior: smooth; }
+        .hover-zoom { transition: transform 0.3s ease; }
+        .hover-zoom:hover { transform: scale(1.02); }
+
+        /* Play Button Overlay for Thumbnails */
+        .play-overlay {
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
+        }
+        .group:hover .play-overlay {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .play-icon {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .group:hover .play-icon {
+            transform: scale(1.2);
+        }
+
+        /* Yellow Note Pad Style */
+        .notepad {
+            background-color: #fef9c3; /* Yellow-100 */
+            background-image: linear-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 100% 2rem;
+            line-height: 2rem;
+            font-family: 'Noto Sans KR', sans-serif;
+            border-left: 4px solid #f59e0b;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+        }
+        .notepad:focus {
+            outline: none;
+            background-color: #fef08a; /* Yellow-200 on focus */
+        }
+    </style>
+</head>
+<body class="antialiased bg-slate-50">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Tourmaker Logo & D-Day -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png" alt="Tourmaker Logo" class="h-8 w-auto">
+                    <!-- D-Day Counter Badge -->
+                    <div id="d-day-badge" class="bg-sky-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md animate-pulse">
+                        Calculating...
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button (Hamburger) - Simple Implementation -->
+                <div class="md:hidden">
+                    <a href="#mynote" class="text-yellow-600 font-bold text-sm mr-2"><i class="fa-solid fa-pen-to-square"></i> MY노트</a>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 text-sm font-medium">
+                        <a href="#home"         class="nav-link px-3 py-2 border-b-2 border-transparent active">소개</a>
+                        <a href="#highlight"    class="nav-link px-3 py-2 border-b-2 border-transparent">핵심 탐방</a>
+                        <a href="#cities"       class="nav-link px-3 py-2 border-b-2 border-transparent">도시영상</a>
+                        <a href="#timeline"     class="nav-link px-3 py-2 border-b-2 border-transparent">일정</a>
+                        <a href="#pretravel"    class="nav-link px-3 py-2 border-b-2 border-transparent text-sky-600 font-bold">출발/미팅</a>
+                        <a href="#mynote"       class="nav-link px-3 py-2 border-b-2 border-transparent text-yellow-600 font-bold"><i class="fa-solid fa-pen-to-square"></i> MY 노트</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Mobile Secondary Nav (Horizontal Scroll) -->
+        <div class="md:hidden overflow-x-auto whitespace-nowrap bg-slate-50 border-b border-slate-200">
+            <div class="flex px-4 py-2 space-x-4 text-xs font-medium text-slate-600">
+                <a href="#home" class="block">홈</a>
+                <a href="#highlight" class="block">핵심</a>
+                <a href="#timeline" class="block">일정</a>
+                <a href="#pretravel" class="block text-sky-600 font-bold">출발/미팅</a>
+                <a href="#mynote" class="block text-yellow-600 font-bold">★MY노트</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg-kyushu text-white text-center flex items-center justify-center min-h-[85vh] relative">
+            <div class="container mx-auto px-4 z-10">
+                <p class="text-xl font-semibold text-yellow-400 mb-2">2026 정선군청 경제과 선진지 견학</p>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight drop-shadow-lg">
+                    지역경제 활성화의 해법,<br>북큐슈에서 찾다
+                </h1>
+                
+                <div class="inline-block bg-white/95 p-4 rounded-xl shadow-lg mb-8">
+                    <!-- Placeholder for Jeongseon Logo if available, otherwise clear text -->
+                    <span class="text-slate-800 font-bold text-xl tracking-wider">JEONGSEON COUNTY</span>
+                </div>
+
+                <div class="mt-4 max-w-3xl mx-auto bg-slate-900/60 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
+                    <h2 class="text-2xl font-bold mb-3">전통과 혁신의 공존, 성공적 도시재생 모델</h2>
+                    <p class="text-lg text-slate-200">
+                        <span class="text-yellow-400 font-bold">유후인 상점가</span>의 지역 상생 모델, 
+                        <span class="text-yellow-400 font-bold">캐널시티</span>의 도시 재생 성공 사례, 
+                        그리고 <span class="text-sky-300 font-bold">대한항공(KE)</span>과 함께하는 품격 있는 여정
+                    </p>
+                </div>
+                
+                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4 text-lg font-bold">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-lg">
+                        🗓️ 2026.02.16 (월) ~ 02.19 (목)
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-lg">
+                        📍 후쿠오카 / 유후인 / 벳푸
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlights Section -->
+        <section id="highlight" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="text-yellow-600 font-bold tracking-wider uppercase">Key Highlights</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2">정선군청 경제과 맞춤형 핵심 탐방</h2>
+                </div>
+                <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+                      <!-- Card 1 -->
+                      <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex flex-col">
+                        <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl">🌿</div>
+                        <h3 class="text-2xl font-bold mb-3 text-slate-800">Local Revitalization</h3>
+                        <p class="text-slate-600 flex-grow mb-4">
+                            대규모 개발 없이 지역 고유의 자원을 활용해 세계적 관광지가 된 <strong>유후인(Yufuin)</strong>의 성공 사례를 벤치마킹합니다.
+                        </p>
+                        <ul class="text-sm space-y-2 text-slate-700 font-medium bg-white p-4 rounded-lg border">
+                            <li>✔️ 유노츠보 거리: 소상공인 상생 모델</li>
+                            <li>✔️ 긴린코 호수: 자연 경관 활용 전략</li>
+                        </ul>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex flex-col">
+                        <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl">🏙️</div>
+                        <h3 class="text-2xl font-bold mb-3 text-slate-800">Urban Regeneration</h3>
+                        <p class="text-slate-600 flex-grow mb-4">
+                            구도심 활성화의 교과서 <strong>캐널시티 하카타</strong>와 최신 복합 쇼핑몰 <strong>라라포트</strong>를 통해 상권 활성화 전략을 탐구합니다.
+                        </p>
+                        <ul class="text-sm space-y-2 text-slate-700 font-medium bg-white p-4 rounded-lg border">
+                            <li>✔️ 캐널시티: 수변 공간 활용 및 집객</li>
+                            <li>✔️ 라라포트: 체험형 콘텐츠와 상업의 조화</li>
+                        </ul>
+                    </div>
+                    <!-- Card 3: Culture -->
+                    <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500 rounded-full blur-3xl opacity-20 -mr-16 -mt-16"></div>
+                        <div class="bg-slate-700 w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl">⛩️</div>
+                        <h3 class="text-2xl font-bold mb-3">Cultural Heritage</h3>
+                        <p class="text-slate-300 flex-grow mb-4">
+                            <strong>다자이후 텐만구</strong>와 <strong>뱃놀이(야나가와)</strong> 등 역사적 자원을 활용한 관광 상품화 사례를 직접 체험합니다.
+                        </p>
+                        <ul class="text-sm space-y-2 text-slate-200 font-medium bg-slate-800 p-4 rounded-lg border border-slate-600">
+                            <li>✔️ 스타벅스 다자이후: 전통과 현대의 조화</li>
+                            <li>✔️ 오모테산도 상점가: 관광 기념품 개발</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cities Video & Info Section -->
+        <section id="cities" class="py-20 bg-slate-50 border-t">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <span class="text-sky-600 font-bold tracking-wider uppercase">Destination Preview</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2">영상으로 만나는 북큐슈</h2>
+                    <p class="text-slate-500 mt-2">가장 가까운 선진 관광지, 후쿠오카와 오이타현</p>
+                </div>
+                
+                <div class="max-w-6xl mx-auto space-y-20">
+                    <!-- Fukuoka Block -->
+                    <div class="grid lg:grid-cols-2 gap-10 items-center">
+                        <div class="order-2 lg:order-1">
+                            <div class="inline-block bg-sky-100 text-sky-800 px-3 py-1 rounded-full text-sm font-bold mb-4">Fukuoka</div>
+                            <h3 class="text-3xl font-bold text-slate-900 mb-6">후쿠오카 (Fukuoka) <span class="text-lg font-normal text-gray-500">| 아시아의 관문</span></h3>
+                            
+                            <div class="space-y-6">
+                                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                                    <h4 class="font-bold text-lg mb-2 text-slate-800">📊 벤치마킹 포인트</h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        공항과 도심의 근접성을 활용한 MICE 산업 육성, 하카타역 주변의 컴팩트 시티 전략, 그리고 텐진 지역의 '텐진 빅뱅' 재개발 프로젝트 등 도시 경쟁력 강화 전략을 확인할 수 있습니다.
+                                    </p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <img src="https://images.unsplash.com/photo-1627827821422-7776495cb38c?q=80&w=2070&auto=format&fit=crop" alt="후쿠오카 타워" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
+                                    <img src="https://images.unsplash.com/photo-1549646422-9df73966034f?q=80&w=2070&auto=format&fit=crop" alt="나카스 야시장" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2">
+                            <!-- Fukuoka Video -->
+                            <div class="bg-white p-3 rounded-2xl shadow-xl border border-slate-200">
+                                <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 cursor-pointer group" onclick="playVideo(this, 'Is2L4mO7OQU')">
+                                    <img src="https://img.youtube.com/vi/Is2L4mO7OQU/maxresdefault.jpg" alt="Fukuoka Video Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                                    <div class="absolute inset-0 flex items-center justify-center play-overlay">
+                                        <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white play-icon">
+                                            <span class="text-white text-4xl ml-2">▶</span>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent">
+                                        <p class="text-white font-bold text-xl">Fukuoka: Dynamic City 4K</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yufuin & Beppu Block -->
+                    <div class="grid lg:grid-cols-2 gap-10 items-center">
+                        <div class="order-1">
+                            <!-- Yufuin Video -->
+                            <div class="bg-white p-3 rounded-2xl shadow-xl border border-slate-200">
+                                <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 cursor-pointer group" onclick="playVideo(this, 'M2n2lKj2hZw')">
+                                    <img src="https://img.youtube.com/vi/M2n2lKj2hZw/maxresdefault.jpg" alt="Yufuin Video Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                                    <div class="absolute inset-0 flex items-center justify-center play-overlay">
+                                        <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white play-icon">
+                                            <span class="text-white text-4xl ml-2">▶</span>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent">
+                                        <p class="text-white font-bold text-xl">Yufuin: Walking Tour</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-2">
+                            <div class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-bold mb-4">Oita (Beppu & Yufuin)</div>
+                            <h3 class="text-3xl font-bold text-slate-900 mb-6">오이타 (Oita) <span class="text-lg font-normal text-gray-500">| 치유와 재생</span></h3>
+                            
+                            <div class="space-y-6">
+                                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                                    <h4 class="font-bold text-lg mb-2 text-slate-800">📊 벤치마킹 포인트</h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        <strong>유후인:</strong> 주민 주도의 고도 제한 및 경관 보존 조례를 통해 대형 자본 없이도 세계적인 관광지가 된 '마을 만들기' 사례.<br>
+                                        <strong>벳푸:</strong> 용출량이 풍부한 온천 자원을 '지옥 순례'라는 테마파크형 관광 상품으로 개발한 아이디어.
+                                    </p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <img src="https://images.unsplash.com/photo-1541355444583-9364952d7ee8?q=80&w=2070&auto=format&fit=crop" alt="벳푸 온천" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
+                                    <img src="https://images.unsplash.com/photo-1629080766860-31656828b84d?q=80&w=2056&auto=format&fit=crop" alt="유후인 거리" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">3박 4일 공식 일정 (대한항공)</h2>
+                <p class="text-center text-slate-500 text-sm mb-10">※ 현지 사정 및 항공 스케줄에 의하여 변경될 수 있습니다.</p>
+                
+                <!-- Tab Navigation -->
+                <div class="max-w-5xl mx-auto bg-slate-50 rounded-t-2xl shadow-sm border-b overflow-hidden flex flex-wrap">
+                    <button class="tab-btn active flex-1 py-4 font-bold text-sm md:text-base border-b-4 border-transparent hover:bg-slate-100 transition-colors" data-tab="day1">DAY 1</button>
+                    <button class="tab-btn flex-1 py-4 font-bold text-sm md:text-base border-b-4 border-transparent hover:bg-slate-100 transition-colors" data-tab="day2">DAY 2</button>
+                    <button class="tab-btn flex-1 py-4 font-bold text-sm md:text-base border-b-4 border-transparent hover:bg-slate-100 transition-colors text-sky-700" data-tab="day3">DAY 3</button>
+                    <button class="tab-btn flex-1 py-4 font-bold text-sm md:text-base border-b-4 border-transparent hover:bg-slate-100 transition-colors" data-tab="day4">DAY 4</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="max-w-5xl mx-auto bg-white rounded-b-2xl shadow-xl p-8 md:p-12 min-h-[400px] border border-slate-100">
+                    <div id="tabs-content">
+                        <!-- JS renders content here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pre-Travel Guide -->
+        <section id="pretravel" class="py-20 bg-slate-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-5xl mx-auto mb-12 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-3">출발 가이드 & 공항 안내</h2>
+                </div>
+
+                <!-- Airport Meeting Card -->
+                <div class="max-w-4xl mx-auto bg-sky-50 border-2 border-sky-200 rounded-2xl p-8 mb-12 shadow-lg flex flex-col md:flex-row gap-8">
+                    <div class="flex-shrink-0 flex items-start justify-center md:justify-start">
+                        <div class="bg-sky-100 p-4 rounded-full">
+                            <span class="text-4xl">✈️</span>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold text-sky-900 mb-2 text-center md:text-left">공항 집합 안내 (필독)</h3>
+                        <p class="text-slate-700 mb-6 text-center md:text-left">대한항공 탑승을 위해 제2여객터미널(T2)로 오셔야 합니다.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="bg-white p-4 rounded-lg border border-sky-100 shadow-sm">
+                                    <p class="text-xs text-slate-500 font-bold uppercase">Meeting Time</p>
+                                    <p class="text-xl font-black text-slate-800">2026.02.16 (월) 06:00</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg border border-sky-100 shadow-sm">
+                                    <p class="text-xs text-slate-500 font-bold uppercase">Location</p>
+                                    <p class="text-lg font-bold text-slate-800">인천공항 <span class="text-sky-600">제2여객터미널(T2)</span><br>3층 H카운터 앞</p>
+                                </div>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg border border-sky-100 shadow-sm">
+                                <!-- Generic ICN T2 Image -->
+                                <img src="https://images.unsplash.com/photo-1542296332-2e44a99cfef9?q=80&w=2070&auto=format&fit=crop" alt="인천공항 T2" class="w-full h-32 object-cover rounded hover-zoom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expanded Info Cards -->
+                <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Check-in -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-bold mb-3 flex items-center text-sky-900">
+                            🛂 비짓 재팬 웹 (입국신고)
+                        </h3>
+                        <ol class="list-decimal list-inside text-sm text-slate-700 space-y-2">
+                            <li>일본 입국 필수 절차 (검역/입국심사/세관)</li>
+                            <li>출발 전 QR코드 발급 및 캡처 필수</li>
+                            <li>미등록 시 기내에서 종이 신고서 작성</li>
+                            <li class="pt-1"><a href="https://vjw-lp.digital.go.jp/ko/" target="_blank" class="text-sky-600 font-bold underline">🔗 Visit Japan Web 바로가기</a></li>
+                        </ol>
+                    </div>
+                    <!-- Weather -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-bold mb-3 flex items-center text-slate-800">
+                            🧥 2월 날씨 & 옷차림
+                        </h3>
+                        <p class="text-sm text-slate-600 mb-2">한국보다 포근함 (5℃ ~ 13℃)</p>
+                        <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                            <li>서울의 초봄/늦가을 날씨와 유사</li>
+                            <li>일교차 대비 가벼운 패딩, 코트 추천</li>
+                            <li>온천욕 예정 시 편안한 복장 준비</li>
+                        </ul>
+                    </div>
+                    <!-- Payment -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-bold mb-3 flex items-center text-green-800">
+                            💴 환전 & 전압
+                        </h3>
+                        <ul class="list-disc list-inside text-sm text-slate-700 space-y-2">
+                            <li><strong>통화:</strong> 일본 엔화(JPY) 준비</li>
+                            <li>대형몰은 카드 가능, 시골 상점은 현금 필수</li>
+                            <li><strong>전압:</strong> <span class="text-red-600 font-bold">110V (돼지코 필수)</span></li>
+                            <li>호텔 와이파이 무료 제공</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Assistant Section -->
+        <section id="personal-assistant" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4"><i class="fa-solid fa-user-astronaut text-sky-600"></i> 나만의 여행 비서</h2>
+                
+                <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                    
+                    <!-- 1. Smart Checklist -->
+                    <div id="checklist" class="bg-slate-50 p-6 rounded-2xl shadow-lg border border-slate-200">
+                        <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-green-600"></i> 준비물 체크리스트
+                        </h3>
+                        <p class="text-sm text-slate-500 mb-6 border-b pb-4">빠진 물건이 없는지 출국 전 마지막으로 확인하세요.</p>
+                        
+                        <div id="checklist-container" class="space-y-3 h-[400px] overflow-y-auto pr-2">
+                            <!-- JS generates items -->
+                        </div>
+                        <div class="mt-6 text-center">
+                            <button onclick="resetChecklist()" class="text-xs text-slate-400 underline hover:text-slate-600">체크리스트 초기화</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. My Yellow Note -->
+                    <div id="mynote" class="flex flex-col">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2 px-2">
+                            <i class="fa-solid fa-pen-to-square text-yellow-600"></i> MY 노트
+                        </h3>
+                        <div class="relative flex-grow">
+                            <!-- Yellow Pad Note -->
+                            <textarea id="travel-memo" 
+                                class="notepad w-full h-[480px] p-6 text-lg text-slate-800 resize-none rounded-lg"
+                                placeholder="여권번호, 비짓재팬 비밀번호, 쇼핑 리스트 등을 적어두세요.&#10;인터넷이 안 터져도 내용은 저장되어 있습니다."></textarea>
+                            
+                            <div id="save-status" class="absolute bottom-4 right-4 text-xs text-slate-500 bg-white/50 px-2 py-1 rounded">
+                                자동 저장 대기중...
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Contact -->
+        <section id="emergency" class="py-20 bg-slate-100">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl font-bold mb-8">비상 연락망</h2>
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-red-600 mb-2">현지 긴급</h4>
+                        <p class="text-slate-700">경찰 110 / 소방 119</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-2 border-yellow-400 flex flex-col items-center justify-center">
+                        <h4 class="font-bold text-slate-900 mb-2">투어메이커</h4>
+                        <div class="text-center mb-2">
+                            <p class="font-medium text-slate-700">담당자: 투어메이커 상황실</p>
+                            <a href="tel:020000000" class="text-sm text-sky-600">02-000-0000</a>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-blue-600 mb-2">영사관</h4>
+                        <p class="text-slate-700">주 후쿠오카 대한민국 총영사관</p>
+                        <a href="tel:+81927710461" class="text-sm text-sky-600">+81-92-771-0461</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 text-center">
+            <!-- New Tourmaker Logo -->
+            <div class="mb-6 flex justify-center">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0YSsOZ847rEAjEI5w8uFj7k66WmuO18z2dZuvC5dR80SjnRbjOSrWRmqAP3CrBLPQgWQloK8Ic9n15Kjj879TNlCy8dGxyArnbDnorHB9VhqP-9dqOAb0Dnb0TOf67vZ94O-z_NQ0KUCqv7Ig-SEEWE4yESfTvJXwTgSn5wj03vT048UiCyMyl-hF-6w" alt="Tourmaker Footer Logo" class="h-10 md:h-12 w-auto opacity-80 hover:opacity-100 transition-opacity">
+            </div>
+            
+            <p class="mb-2 font-medium text-slate-300">정선군청 경제과의 성공적인 벤치마킹 연수를 응원합니다.</p>
+            <p class="text-sm text-slate-600">&copy; 2026 Tourmaker. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Video Play Logic
+        function playVideo(element, videoId) {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            iframe.title = "YouTube Video";
+            iframe.className = "w-full h-full";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            iframe.allowFullscreen = true;
+            
+            // Clear current content and add iframe
+            element.innerHTML = '';
+            element.appendChild(iframe);
+            element.classList.remove('cursor-pointer', 'group'); // Remove hover effects
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // ---------------------------------------------------------
+            // 0. D-Day Counter Logic
+            // ---------------------------------------------------------
+            const dDayBadge = document.getElementById('d-day-badge');
+            
+            // Date Logic: Set target date to 2026-02-16
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            const startDate = new Date('2026-02-16T00:00:00');
+            startDate.setHours(0,0,0,0);
+            
+            const endDate = new Date('2026-02-19T00:00:00');
+            endDate.setHours(0,0,0,0);
+
+            if (today < startDate) {
+                const diff = Math.ceil((startDate - today) / (1000 * 60 * 60 * 24));
+                dDayBadge.innerText = `D-${diff}`;
+                dDayBadge.classList.add('bg-sky-600', 'animate-pulse');
+            } else if (today <= endDate) {
+                const diff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
+                dDayBadge.innerText = `연수 ${diff}일차`;
+                dDayBadge.classList.remove('bg-sky-600', 'animate-pulse');
+                dDayBadge.classList.add('bg-green-600', 'animate-bounce');
+            } else {
+                dDayBadge.innerHTML = `연수가 종료되었습니다`;
+                dDayBadge.classList.remove('bg-sky-600', 'animate-pulse');
+                dDayBadge.classList.add('bg-slate-600');
+            }
+
+            // ---------------------------------------------------------
+            // 1. My Yellow Note (Auto-save)
+            // ---------------------------------------------------------
+            const memoArea = document.getElementById('travel-memo');
+            const saveStatus = document.getElementById('save-status');
+            
+            // Load saved memo
+            const savedMemo = localStorage.getItem('jeongseon_memo_v1');
+            if (savedMemo) {
+                memoArea.value = savedMemo;
+            }
+
+            // Save on input (with small debounce/immediate feedback)
+            memoArea.addEventListener('input', function() {
+                localStorage.setItem('jeongseon_memo_v1', this.value);
+                saveStatus.innerText = "저장됨 " + new Date().toLocaleTimeString();
+                saveStatus.classList.add('text-green-600');
+                setTimeout(() => saveStatus.classList.remove('text-green-600'), 1000);
+            });
+
+            // ---------------------------------------------------------
+            // 2. Navigation Active Scroll Spy
+            // ---------------------------------------------------------
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active', 'text-yellow-600', 'border-yellow-600');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active', 'text-yellow-600', 'border-yellow-600');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.15 });
+            sections.forEach(section => observer.observe(section));
+            
+            // ---------------------------------------------------------
+            // 3. Schedule Data (Jeongseon - Kyushu Itinerary)
+            // ---------------------------------------------------------
+            const scheduleData = {
+                day1: {
+                    title: 'DAY 1: 2월 16일 (월) - 출발 및 다자이후 탐방',
+                    items: [
+                        { time: '06:00', desc: '<span class="text-sky-600 font-bold">인천공항 T2 3층 H카운터 집합</span> (대한항공)', icon: '🚩' },
+                        { time: '09:00', desc: '인천 국제공항 출발 (KE787)', icon: '✈️' },
+                        { time: '10:30', desc: '후쿠오카 국제공항 도착 및 입국 수속', icon: '🛬' },
+                        { time: '중식', desc: '<strong class="text-slate-800">현지식 (우동/소바 정식)</strong>', icon: '🍜' },
+                        { time: '오후', desc: '<strong class="text-slate-900">다자이후 텐만구</strong><br><span class="text-sm text-slate-600">오모테산도 상점가 기념품 개발 현황 견학</span>', icon: '⛩️' },
+                        { time: '석식', desc: '<strong class="text-slate-800">현지식</strong>', icon: '🍴' },
+                        { time: '숙박', desc: '후쿠오카 시내 특급 호텔', icon: '🏨' },
+                    ]
+                },
+                day2: {
+                    title: 'DAY 2: 2월 17일 (화) - 지역 관광 활성화 사례 (유후인/벳푸)',
+                    items: [
+                        { time: '오전', desc: '호텔 조식 후 유후인으로 이동', icon: '🚌' },
+                        { time: '10:30', desc: '<strong class="text-green-700">유후인 민예촌 거리</strong> (유노츠보)<br><span class="text-sm text-slate-600">소상공인 중심의 상점가 운영 실태 조사</span>', icon: '🛍️' },
+                        { time: '11:30', desc: '긴린코 호수 산책 및 자연 경관 활용 사례', icon: '🏞️' },
+                        { time: '중식', desc: '<strong class="text-slate-800">현지식 (닭고기 덮밥 등)</strong>', icon: '🍱' },
+                        { time: '오후', desc: '벳푸로 이동', icon: '🚌' },
+                        { time: '15:00', desc: '<strong class="text-red-700">벳푸 가마도 지옥</strong><br><span class="text-sm text-slate-600">특이 지형을 활용한 테마파크형 상품 체험 (족욕 포함)</span>', icon: '♨️' },
+                        { time: '석식', desc: '호텔 뷔페 또는 가이세키', icon: '🍣' },
+                        { time: '숙박', desc: '벳푸 또는 스기노이 온천 호텔', icon: '🏨' },
+                    ]
+                },
+                day3: {
+                    title: 'DAY 3: 2월 18일 (수) - 도시 재생 및 상권 벤치마킹',
+                    items: [
+                        { time: '오전', desc: '호텔 조식 후 후쿠오카 이동', icon: '🚌' },
+                        { time: '10:30', desc: '<strong class="text-blue-700">라라포트 후쿠오카</strong><br><span class="text-sm text-slate-600">복합 쇼핑몰의 집객 콘텐츠(건담 등) 및 공간 구성 확인</span>', icon: '🤖' },
+                        { time: '중식', desc: '<strong class="text-slate-800">자유식 (푸드코트 벤치마킹)</strong>', icon: '🍔' },
+                        { time: '14:00', desc: '<strong class="text-sky-700">캐널시티 하카타</strong><br><span class="text-sm text-slate-600">운하를 활용한 도심 재생 성공 모델 견학</span>', icon: '🏙️' },
+                        { time: '16:00', desc: '<strong class="text-slate-900">하카타역/텐진 지구</strong> 상권 시찰', icon: '🚶' },
+                        { time: '석식', desc: '<strong class="text-slate-800">현지식 (야키니쿠 등)</strong>', icon: '🥩' },
+                        { time: '숙박', desc: '후쿠오카 시내 특급 호텔', icon: '🏨' },
+                    ]
+                },
+                day4: {
+                    title: 'DAY 4: 2월 19일 (목) - 귀국',
+                    items: [
+                        { time: '오전', desc: '호텔 조식 후 공항으로 이동', icon: '🚌' },
+                        { time: '10:00', desc: '면세점 및 공항 시설 견학', icon: '🛍️' },
+                        { time: '11:40', desc: '후쿠오카 국제공항 출발 (KE788)', icon: '✈️' },
+                        { time: '13:15', desc: '인천 국제공항 도착 및 해산', icon: '🛬' },
+                    ]
+                }
+            };
+
+            // 4. Render Schedule Tabs
+            const tabsContainer = document.getElementById('tabs-content');
+            const tabButtons = document.querySelectorAll('.tab-btn');
+
+            function renderTabContent(day) {
+                const data = scheduleData[day];
+                let content = `<div class="animate-fade-in"><h3 class="text-2xl font-bold mb-8 text-slate-800 border-b pb-4">${data.title}</h3><ul class="space-y-6">`;
+                data.items.forEach(item => {
+                    content += `
+                        <li class="flex items-start group">
+                            <span class="text-3xl mr-5 group-hover:scale-110 transition-transform">${item.icon}</span>
+                            <div>
+                                <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded mb-1">${item.time}</span>
+                                <p class="text-slate-700 text-lg leading-relaxed">${item.desc}</p>
+                            </div>
+                        </li>`;
+                });
+                content += '</ul></div>';
+                tabsContainer.innerHTML = content;
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active', 'bg-sky-600', 'text-white'));
+                    button.classList.add('active'); 
+                    renderTabContent(button.dataset.tab);
+                });
+            });
+
+            // Initial Render
+            renderTabContent('day1');
+
+            // ---------------------------------------------------------
+            // 5. Checklist Logic (Smart Save)
+            // ---------------------------------------------------------
+            const checklistContainer = document.getElementById('checklist-container');
+            const checklistItems = [
+                { id: 'passport', text: '여권 (유효기간 6개월 이상)' },
+                { id: 'vjw', text: 'Visit Japan Web 등록 (QR캡처)' },
+                { id: 'eticket', text: 'E-티켓 (대한항공)' },
+                { id: 'yen', text: '엔화 환전 (현금/트래블카드)' },
+                { id: 'adapter', text: '110V 어댑터 (돼지코) 필수' },
+                { id: 'battery', text: '보조배터리 (기내 반입)' },
+                { id: 'meds', text: '개인 상비약 (소화제/두통약)' },
+                { id: 'roaming', text: '데이터 로밍/유심/와이파이' },
+                { id: 'clothes', text: '계절별 의류 (경량패딩 등)' },
+                { id: 'umbrella', text: '작은 우산 (우천 대비)' }
+            ];
+
+            checklistItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex items-center p-3 bg-white rounded-lg border border-slate-200 hover:bg-slate-100 transition-colors shadow-sm';
+                div.innerHTML = `
+                    <input type="checkbox" id="${item.id}" class="h-5 w-5 text-sky-600 rounded border-gray-300 focus:ring-sky-500 cursor-pointer">
+                    <label for="${item.id}" class="ml-3 text-slate-700 font-medium cursor-pointer flex-grow select-none">${item.text}</label>
+                `;
+                checklistContainer.appendChild(div);
+                
+                const checkbox = div.querySelector('input');
+                // Use a unique key for version
+                checkbox.checked = localStorage.getItem('jeongseon_check_v1_' + item.id) === 'true';
+                checkbox.addEventListener('change', (e) => localStorage.setItem('jeongseon_check_v1_' + item.id, e.target.checked));
+            });
+
+            window.resetChecklist = function() {
+                if(confirm('체크리스트를 초기화 하시겠습니까?')) {
+                    checklistItems.forEach(item => {
+                        localStorage.removeItem('jeongseon_check_v1_' + item.id);
+                        document.getElementById(item.id).checked = false;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
