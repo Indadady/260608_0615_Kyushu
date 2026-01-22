@@ -14,7 +14,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정선군청 경제과: 북큐슈 선진지 견학 스마트 가이드</title>
+    <title>정선군청 경제과: 북큐슈/야마구치 선진지 견학 스마트 가이드</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; color: #1e293b; }
         
-        /* Hero Background: Yufuin or Fukuoka vibe */
+        /* Hero Background */
         .hero-bg-kyushu { 
             background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(30, 58, 138, 0.7)), url('https://images.unsplash.com/photo-1572978351333-6c845b4dd52b?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
@@ -45,7 +45,7 @@
         .hover-zoom { transition: transform 0.3s ease; }
         .hover-zoom:hover { transform: scale(1.02); }
 
-        /* Play Button Overlay for Thumbnails */
+        /* Play Button Overlay */
         .play-overlay {
             background: rgba(0, 0, 0, 0.4);
             transition: all 0.3s;
@@ -60,19 +60,13 @@
             transform: scale(1.2);
         }
 
-        /* Yellow Note Pad Style */
+        /* Note Pad Style */
         .notepad {
-            background-color: #fef9c3; /* Yellow-100 */
+            background-color: #fef9c3;
             background-image: linear-gradient(#e5e7eb 1px, transparent 1px);
             background-size: 100% 2rem;
             line-height: 2rem;
-            font-family: 'Noto Sans KR', sans-serif;
             border-left: 4px solid #f59e0b;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-        }
-        .notepad:focus {
-            outline: none;
-            background-color: #fef08a; /* Yellow-200 on focus */
         }
     </style>
 </head>
@@ -91,7 +85,7 @@
                     </div>
                 </div>
                 
-                <!-- Mobile Menu Button (Hamburger) - Simple Implementation -->
+                <!-- Mobile Menu Button -->
                 <div class="md:hidden">
                     <a href="#mynote" class="text-yellow-600 font-bold text-sm mr-2"><i class="fa-solid fa-pen-to-square"></i> MY노트</a>
                 </div>
@@ -103,18 +97,20 @@
                         <a href="#highlight"    class="nav-link px-3 py-2 border-b-2 border-transparent">핵심 탐방</a>
                         <a href="#cities"       class="nav-link px-3 py-2 border-b-2 border-transparent">도시영상</a>
                         <a href="#timeline"     class="nav-link px-3 py-2 border-b-2 border-transparent">일정</a>
+                        <a href="#fgn"          class="nav-link px-3 py-2 border-b-2 border-transparent text-indigo-600 font-bold">벤치마킹</a>
                         <a href="#pretravel"    class="nav-link px-3 py-2 border-b-2 border-transparent text-sky-600 font-bold">출발/미팅</a>
                         <a href="#mynote"       class="nav-link px-3 py-2 border-b-2 border-transparent text-yellow-600 font-bold"><i class="fa-solid fa-pen-to-square"></i> MY 노트</a>
                     </div>
                 </div>
             </div>
         </nav>
-        <!-- Mobile Secondary Nav (Horizontal Scroll) -->
+        <!-- Mobile Secondary Nav -->
         <div class="md:hidden overflow-x-auto whitespace-nowrap bg-slate-50 border-b border-slate-200">
             <div class="flex px-4 py-2 space-x-4 text-xs font-medium text-slate-600">
                 <a href="#home" class="block">홈</a>
                 <a href="#highlight" class="block">핵심</a>
                 <a href="#timeline" class="block">일정</a>
+                <a href="#fgn" class="block text-indigo-600 font-bold">벤치마킹</a>
                 <a href="#pretravel" class="block text-sky-600 font-bold">출발/미팅</a>
                 <a href="#mynote" class="block text-yellow-600 font-bold">★MY노트</a>
             </div>
@@ -127,20 +123,20 @@
             <div class="container mx-auto px-4 z-10">
                 <p class="text-xl font-semibold text-yellow-400 mb-2">2026 정선군청 경제과 선진지 견학</p>
                 <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight drop-shadow-lg">
-                    지역경제 활성화의 해법,<br>북큐슈에서 찾다
+                    지역경제 활성화의 해법,<br>북큐슈 & 야마구치에서 찾다
                 </h1>
                 
-                <div class="inline-block bg-white/95 p-4 rounded-xl shadow-lg mb-8">
-                    <!-- Placeholder for Jeongseon Logo if available, otherwise clear text -->
-                    <span class="text-slate-800 font-bold text-xl tracking-wider">JEONGSEON COUNTY</span>
+                <!-- Jeongseon Logo -->
+                <div class="inline-block bg-white/95 p-6 rounded-xl shadow-lg mb-8">
+                    <img src="https://www.jeongseon.go.kr/page/portal/images/common/img-logo.png" alt="정선군청 로고" class="h-12 w-auto">
                 </div>
 
                 <div class="mt-4 max-w-3xl mx-auto bg-slate-900/60 backdrop-blur-sm p-6 rounded-xl border border-slate-700">
-                    <h2 class="text-2xl font-bold mb-3">전통과 혁신의 공존, 성공적 도시재생 모델</h2>
+                    <h2 class="text-2xl font-bold mb-3">전통과 혁신, 그리고 대자연의 조화</h2>
                     <p class="text-lg text-slate-200">
-                        <span class="text-yellow-400 font-bold">유후인 상점가</span>의 지역 상생 모델, 
-                        <span class="text-yellow-400 font-bold">캐널시티</span>의 도시 재생 성공 사례, 
-                        그리고 <span class="text-sky-300 font-bold">대한항공(KE)</span>과 함께하는 품격 있는 여정
+                        <span class="text-yellow-400 font-bold">FGN (구 다이묘초등학교)</span> 스타트업 혁신 거점,
+                        <span class="text-yellow-400 font-bold">유후인/히타</span>의 관광 상품화, 
+                        <span class="text-sky-300 font-bold">라라포트/가라토 시장</span>의 상권 활성화
                     </p>
                 </div>
                 
@@ -168,38 +164,38 @@
                       <!-- Card 1 -->
                       <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex flex-col">
                         <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl">🌿</div>
-                        <h3 class="text-2xl font-bold mb-3 text-slate-800">Local Revitalization</h3>
+                        <h3 class="text-2xl font-bold mb-3 text-slate-800">Local Branding</h3>
                         <p class="text-slate-600 flex-grow mb-4">
-                            대규모 개발 없이 지역 고유의 자원을 활용해 세계적 관광지가 된 <strong>유후인(Yufuin)</strong>의 성공 사례를 벤치마킹합니다.
+                            전통을 지키며 관광지로 거듭난 <strong>히타 마메다마치</strong>와 <strong>유후인 민예촌</strong>을 통해 지역 특화 브랜딩 전략을 확인합니다.
                         </p>
                         <ul class="text-sm space-y-2 text-slate-700 font-medium bg-white p-4 rounded-lg border">
-                            <li>✔️ 유노츠보 거리: 소상공인 상생 모델</li>
-                            <li>✔️ 긴린코 호수: 자연 경관 활용 전략</li>
+                            <li>✔️ 유후인: 고유 경관 보존 및 상점가</li>
+                            <li>✔️ 히타: 에도 시대 거리 보존과 활용</li>
                         </ul>
                     </div>
                     <!-- Card 2 -->
                     <div class="bg-slate-50 border border-slate-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex flex-col">
-                        <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl">🏙️</div>
-                        <h3 class="text-2xl font-bold mb-3 text-slate-800">Urban Regeneration</h3>
+                        <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl">🌋</div>
+                        <h3 class="text-2xl font-bold mb-3 text-slate-800">Geo-Tourism</h3>
                         <p class="text-slate-600 flex-grow mb-4">
-                            구도심 활성화의 교과서 <strong>캐널시티 하카타</strong>와 최신 복합 쇼핑몰 <strong>라라포트</strong>를 통해 상권 활성화 전략을 탐구합니다.
+                            세계적 활화산 <strong>아소산</strong>과 일본 최대 카르스트 지형 <strong>아키요시다이</strong> 등 지질 자원의 관광 상품화 성공 사례를 탐방합니다.
                         </p>
                         <ul class="text-sm space-y-2 text-slate-700 font-medium bg-white p-4 rounded-lg border">
-                            <li>✔️ 캐널시티: 수변 공간 활용 및 집객</li>
-                            <li>✔️ 라라포트: 체험형 콘텐츠와 상업의 조화</li>
+                            <li>✔️ 아소: 화산 지형(칼데라) 관광 자원화</li>
+                            <li>✔️ 아키요시동굴: 자연 유산의 보존과 개방</li>
                         </ul>
                     </div>
-                    <!-- Card 3: Culture -->
+                    <!-- Card 3 -->
                     <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex flex-col relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500 rounded-full blur-3xl opacity-20 -mr-16 -mt-16"></div>
-                        <div class="bg-slate-700 w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl">⛩️</div>
-                        <h3 class="text-2xl font-bold mb-3">Cultural Heritage</h3>
+                        <div class="bg-slate-700 w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl">🐟</div>
+                        <h3 class="text-2xl font-bold mb-3">Market Economy</h3>
                         <p class="text-slate-300 flex-grow mb-4">
-                            <strong>다자이후 텐만구</strong>와 <strong>뱃놀이(야나가와)</strong> 등 역사적 자원을 활용한 관광 상품화 사례를 직접 체험합니다.
+                            <strong>가라토 수산시장</strong>과 <strong>탄가 재래시장</strong>, 그리고 최신 몰 <strong>라라포트</strong>를 통해 전통과 현대 상권의 공존을 모색합니다.
                         </p>
                         <ul class="text-sm space-y-2 text-slate-200 font-medium bg-slate-800 p-4 rounded-lg border border-slate-600">
-                            <li>✔️ 스타벅스 다자이후: 전통과 현대의 조화</li>
-                            <li>✔️ 오모테산도 상점가: 관광 기념품 개발</li>
+                            <li>✔️ 가라토 시장: 주말 초밥 시장의 성공</li>
+                            <li>✔️ 라라포트: 체험형 콘텐츠와 집객</li>
                         </ul>
                     </div>
                 </div>
@@ -211,8 +207,8 @@
             <div class="container mx-auto px-4">
                 <div class="text-center mb-12">
                     <span class="text-sky-600 font-bold tracking-wider uppercase">Destination Preview</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mt-2">영상으로 만나는 북큐슈</h2>
-                    <p class="text-slate-500 mt-2">가장 가까운 선진 관광지, 후쿠오카와 오이타현</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2">영상으로 만나는 현장</h2>
+                    <p class="text-slate-500 mt-2">도시 재생과 자연이 어우러진 북큐슈 핵심 코스</p>
                 </div>
                 
                 <div class="max-w-6xl mx-auto space-y-20">
@@ -226,20 +222,21 @@
                                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                                     <h4 class="font-bold text-lg mb-2 text-slate-800">📊 벤치마킹 포인트</h4>
                                     <p class="text-slate-600 text-sm leading-relaxed">
-                                        공항과 도심의 근접성을 활용한 MICE 산업 육성, 하카타역 주변의 컴팩트 시티 전략, 그리고 텐진 지역의 '텐진 빅뱅' 재개발 프로젝트 등 도시 경쟁력 강화 전략을 확인할 수 있습니다.
+                                        <strong>FGN</strong>에서 폐교 활용 도시 재생 사례를, <strong>라라포트 후쿠오카</strong>에서 최신 복합 쇼핑몰의 트렌드를 읽습니다.
                                     </p>
                                 </div>
                                 <div class="flex gap-4">
-                                    <img src="https://images.unsplash.com/photo-1627827821422-7776495cb38c?q=80&w=2070&auto=format&fit=crop" alt="후쿠오카 타워" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
+                                    <img src="https://tse2.mm.bing.net/th/id/OIP.F-6Dcy7f7HJhYO86wKLJFwHaLH?w=474&h=379&c=7&p=0" alt="후쿠오카 타워" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
                                     <img src="https://tse1.mm.bing.net/th/id/OIP.XOkI6hAsoB1V-3e--z5nWAHaEK?cb=defcache2&defcache=1&w=474&h=379&c=7&p=0" alt="나카스 야시장" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
                                 </div>
                             </div>
                         </div>
                         <div class="order-1 lg:order-2">
-                            <!-- Fukuoka Video -->
+                            <!-- Fukuoka Video with Updated Thumbnail -->
                             <div class="bg-white p-3 rounded-2xl shadow-xl border border-slate-200">
                                 <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 cursor-pointer group" onclick="playVideo(this, 'vWlGcW2NLLo')">
-                                    <img src="https://img.youtube.com/vi/vWlGcW2NLLo/maxresdefault.jpg" alt="Fukuoka Video Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                                    <!-- Fukuoka Tower as Thumbnail -->
+                                    <img src="https://tse2.mm.bing.net/th/id/OIP.F-6Dcy7f7HJhYO86wKLJFwHaLH?w=474&h=379&c=7&p=0" alt="Fukuoka Video Thumbnail" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
                                     <div class="absolute inset-0 flex items-center justify-center play-overlay">
                                         <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white play-icon">
                                             <span class="text-white text-4xl ml-2">▶</span>
@@ -253,7 +250,7 @@
                         </div>
                     </div>
 
-                    <!-- Yufuin & Beppu Block -->
+                    <!-- Oita (Yufuin/Beppu) Block -->
                     <div class="grid lg:grid-cols-2 gap-10 items-center">
                         <div class="order-1">
                             <!-- Yufuin Video -->
@@ -285,7 +282,8 @@
                                 </div>
                                 <div class="flex gap-4">
                                     <img src="https://tse2.mm.bing.net/th/id/OIP.pqimMNRmZyY0tDoEsCwybAHaE7?w=474&h=379&c=7&p=0" alt="벳푸 온천" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
-                                    <img src="https://images.unsplash.com/photo-1629080766860-31656828b84d?q=80&w=2056&auto=format&fit=crop" alt="유후인 거리" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
+                                    <!-- Yufuin Image Updated -->
+                                    <img src="https://tse3.mm.bing.net/th/id/OIP.Xa6aSBICbqkuxsGG-I9BNAHaEK?w=474&h=379&c=7&p=0" alt="유후인 거리" class="w-1/2 h-32 object-cover rounded-lg shadow-sm hover-zoom">
                                 </div>
                             </div>
                         </div>
@@ -313,6 +311,66 @@
                 <div class="max-w-5xl mx-auto bg-white rounded-b-2xl shadow-xl p-8 md:p-12 min-h-[400px] border border-slate-100">
                     <div id="tabs-content">
                         <!-- JS renders content here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FGN Special Section (Moved After Timeline) -->
+        <section id="fgn" class="py-20 bg-indigo-50 border-t border-b border-indigo-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <div class="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold mb-4">Benchmarking Option</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">FGN (Fukuoka Growth Next)</h2>
+                    <p class="text-slate-600 mt-3 text-lg">폐교를 활용한 혁신의 거점, 선택 가능한 벤치마킹 방문지</p>
+                </div>
+
+                <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                    <!-- FGN Hero Image -->
+                    <div class="relative h-64 md:h-96">
+                        <img src="https://storage.googleapis.com/studio-cms-assets/projects/xNWYl3D4al/s-2400x1600_v-frms_webp_b8040aec-2d79-45d8-add5-c785802dd7a1_middle.webp" alt="FGN 전경" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 w-full">
+                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">🏫 140년 역사의 초등학교가 스타트업 허브로</h3>
+                            <p class="text-indigo-200 text-lg">2017년 개관, 관민 협력형 창업지원 시설</p>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <div class="p-8 md:p-10 space-y-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-900 mb-3 border-l-4 border-indigo-500 pl-3">📌 핵심 개요</h4>
+                                <p class="text-slate-700 leading-relaxed">
+                                    <strong>Fukuoka Growth Next (FGN)</strong>는 후쿠오카시 중심부 텐진의 옛 다이묘 초등학교(1873년 설립) 건물을 리모델링하여 2017년 4월에 개관한 스타트업 지원 거점입니다.
+                                    단순한 사무실 제공을 넘어, <strong>투자 유치, 법률/세무 상담, 글로벌 진출</strong>을 돕는 실전형 창업지원 플랫폼입니다.
+                                </p>
+                            </div>
+
+                            <div class="space-y-4">
+                                <h4 class="text-xl font-bold text-slate-900 mb-3 border-l-4 border-indigo-500 pl-3">💡 주요 기능 및 역할</h4>
+                                <ul class="space-y-3 text-slate-700">
+                                    <li class="flex items-start"><i class="fa-solid fa-building text-indigo-500 mt-1 mr-3"></i> <span><strong>창업 공간 제공:</strong> 저렴한 오피스·공유 스페이스 제공으로 비용 부담 완화</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-chalkboard-user text-indigo-500 mt-1 mr-3"></i> <span><strong>전문 지원:</strong> 사업계획서, 투자 유치, 법률/세무/마케팅 상담</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-users text-indigo-500 mt-1 mr-3"></i> <span><strong>네트워킹:</strong> 투자자·멘토·기업 간 교류 행사 및 피칭 데이 개최</span></li>
+                                    <li class="flex items-start"><i class="fa-solid fa-globe text-indigo-500 mt-1 mr-3"></i> <span><strong>Global Startup Centre:</strong> 해외 창업자 지원 및 비자 발급 등 규제 완화</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-8 md:p-10 border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col justify-center">
+                            <img src="https://storage.googleapis.com/studio-design-asset-files/projects/xNWYl3D4al/s-1500x1125_v-fms_webp_82c0cf00-3395-41dc-b513-49a2596f79cf_middle.webp" alt="FGN 내부" class="rounded-xl shadow-md mb-6 w-full object-cover h-64">
+                            
+                            <div class="bg-white p-5 rounded-xl border border-indigo-100 shadow-sm mb-4">
+                                <h5 class="font-bold text-indigo-900 mb-2">📊 벤치마킹 포인트</h5>
+                                <p class="text-slate-600 text-sm leading-relaxed italic">
+                                    “FGN은 폐교라는 유휴 공공자원을 혁신의 거점으로 전환한 사례로, 실제 창업 커뮤니티와 투자 네트워크가 형성된 실전형 플랫폼입니다.”
+                                </p>
+                            </div>
+                            
+                            <div class="text-sm text-slate-500 space-y-1">
+                                <p>📍 <strong>위치:</strong> 후쿠오카시 주오구 다이묘 (Tenjin 중심가)</p>
+                                <p>🗓️ <strong>운영 시작:</strong> 2017년 4월 ~ 현재</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -348,8 +406,8 @@
                                 </div>
                             </div>
                             <div class="bg-white p-2 rounded-lg border border-sky-100 shadow-sm">
-                                <!-- Generic ICN T2 Image -->
-                                <img src="https://images.unsplash.com/photo-1542296332-2e44a99cfef9?q=80&w=2070&auto=format&fit=crop" alt="인천공항 T2" class="w-full h-32 object-cover rounded hover-zoom">
+                                <!-- Incheon Airport T2 Image Updated -->
+                                <img src="https://tse1.mm.bing.net/th/id/OIP.hECQzAT5gS6kotyUPqSVMgHaE_?w=474&h=379&c=7&p=0" alt="인천공항 T2" class="w-full h-32 object-cover rounded hover-zoom">
                             </div>
                         </div>
                     </div>
@@ -470,9 +528,17 @@
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
         <div class="container mx-auto px-4 text-center">
-            <!-- New Tourmaker Logo -->
+            <!-- Tourmaker Footer Logo -->
             <div class="mb-6 flex justify-center">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0YSsOZ847rEAjEI5w8uFj7k66WmuO18z2dZuvC5dR80SjnRbjOSrWRmqAP3CrBLPQgWQloK8Ic9n15Kjj879TNlCy8dGxyArnbDnorHB9VhqP-9dqOAb0Dnb0TOf67vZ94O-z_NQ0KUCqv7Ig-SEEWE4yESfTvJXwTgSn5wj03vT048UiCyMyl-hF-6w" alt="Tourmaker Footer Logo" class="h-10 md:h-12 w-auto opacity-80 hover:opacity-100 transition-opacity">
+                <a href="http://tourmaker.kr/" target="_blank" class="hover:opacity-80 transition-opacity">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0YSsOZ847rEAjEI5w8uFj7k66WmuO18z2dZuvC5dR80SjnRbjOSrWRmqAP3CrBLPQgWQloK8Ic9n15Kjj879TNlCy8dGxyArnbDnorHB9VhqP-9dqOAb0Dnb0TOf67vZ94O-z_NQ0KUCqv7Ig-SEEWE4yESfTvJXwTgSn5wj03vT048UiCyMyl-hF-6w" alt="Tourmaker Footer Logo" class="h-10 md:h-12 w-auto">
+                </a>
+            </div>
+            
+            <div class="mb-6">
+                <a href="http://tourmaker.kr/" target="_blank" class="inline-block border border-slate-600 text-slate-400 hover:text-white hover:border-white px-4 py-2 rounded-full text-sm transition-colors">
+                    투어메이커 홈페이지 바로가기 <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                </a>
             </div>
             
             <p class="mb-2 font-medium text-slate-300">정선군청 경제과의 성공적인 벤치마킹 연수를 응원합니다.</p>
@@ -570,66 +636,93 @@
             sections.forEach(section => observer.observe(section));
             
             // ---------------------------------------------------------
-            // 3. Schedule Data (Jeongseon - Kyushu Itinerary 5 Days)
+            // 3. Schedule Data (Updated with Optional FGN)
             // ---------------------------------------------------------
             const scheduleData = {
                 day1: {
-                    title: 'DAY 1: 6월 8일 / 6월 15일 (월) - 출발 및 다자이후',
+                    title: 'DAY 1: 6월 8일 / 6월 15일 (월) - 후쿠오카 & 히타',
                     items: [
                         { time: '출발전', desc: '<span class="text-sky-600 font-bold">인천공항 미팅</span> (시간/장소 개별 안내)', icon: '🚩' },
-                        { time: '09:00', desc: '인천 국제공항 출발 (KE787)', icon: '✈️' },
-                        { time: '10:30', desc: '후쿠오카 국제공항 도착 및 입국 수속', icon: '🛬' },
-                        { time: '중식', desc: '<strong class="text-slate-800">현지식 (우동/소바 정식)</strong>', icon: '🍜' },
-                        { time: '오후', desc: '<strong class="text-slate-900">다자이후 텐만구</strong><br><span class="text-sm text-slate-600">오모테산도 상점가 기념품 개발 현황 견학</span>', icon: '⛩️' },
+                        { time: '08:00', desc: '인천 국제공항 출발 (KE787)', icon: '✈️' },
+                        { time: '09:25', desc: '후쿠오카 국제공항 도착 및 입국 수속', icon: '🛬' },
+                        { 
+                            time: '10:30', 
+                            desc: `
+                                <div class="space-y-4">
+                                    <div class="p-4 bg-white border border-slate-200 rounded-lg shadow-sm">
+                                        <span class="inline-block bg-slate-600 text-white text-[10px] px-2 py-0.5 rounded mb-1">기본 일정</span>
+                                        <strong class="block text-slate-900 text-lg">하카타 타워 (70m 전망대)</strong>
+                                        <span class="text-sm text-slate-600">항만 도시 후쿠오카의 파노라마 조망</span>
+                                    </div>
+                                    <div class="p-4 bg-indigo-50 border border-indigo-200 rounded-lg relative shadow-sm">
+                                        <span class="inline-block bg-indigo-600 text-white text-[10px] px-2 py-0.5 rounded mb-1">선택 일정 (변경 가능)</span>
+                                        <strong class="block text-indigo-900 text-lg">FGN (Fukuoka Growth Next)</strong>
+                                        <span class="text-sm text-slate-700 block mb-2">폐교 리모델링 창업지원센터 벤치마킹</span>
+                                        <p class="text-xs text-red-600 font-bold bg-white/60 p-2 rounded border border-red-100 flex items-center">
+                                            <i class="fa-solid fa-circle-exclamation mr-2"></i>
+                                            방문 변경 시 추가 비용 발생 (방문비/통역비 별도)
+                                        </p>
+                                    </div>
+                                </div>
+                            `, 
+                            icon: '🗼' 
+                        },
+                        { time: '중식', desc: '<strong class="text-slate-800">현지식</strong>', icon: '🍱' },
+                        { time: '오후', desc: '히타로 이동 (약 1시간)', icon: '🚌' },
+                        { time: '14:00', desc: '<strong class="text-slate-900">히타 마메다마치</strong><br><span class="text-sm text-slate-600">에도시대 큐슈 정치/경제 중심지 거리 탐방</span>', icon: '🏘️' },
+                        { time: '15:30', desc: '<strong class="text-blue-700">지온노타키</strong> 폭포 관광', icon: '🌊' },
                         { time: '석식', desc: '<strong class="text-slate-800">현지식</strong>', icon: '🍴' },
-                        { time: '숙박', desc: '후쿠오카 시내 특급 호텔', icon: '🏨' },
+                        { time: '숙박', desc: '히타 루트인 호텔 또는 동급 (온천욕)', icon: '🏨' },
                     ]
                 },
                 day2: {
-                    title: 'DAY 2: 6월 9일 / 6월 16일 (화) - 지역 관광 활성화 사례',
+                    title: 'DAY 2: 6월 9일 / 6월 16일 (화) - 코코노에/유후인/벳푸',
                     items: [
-                        { time: '오전', desc: '호텔 조식 후 유후인으로 이동', icon: '🚌' },
-                        { time: '10:30', desc: '<strong class="text-green-700">유후인 민예촌 거리</strong> (유노츠보)<br><span class="text-sm text-slate-600">소상공인 중심의 상점가 운영 실태 조사</span>', icon: '🛍️' },
-                        { time: '11:30', desc: '긴린코 호수 산책 및 자연 경관 활용 사례', icon: '🏞️' },
-                        { time: '중식', desc: '<strong class="text-slate-800">현지식 (닭고기 덮밥 등)</strong>', icon: '🍱' },
-                        { time: '오후', desc: '벳푸로 이동', icon: '🚌' },
-                        { time: '15:00', desc: '<strong class="text-red-700">벳푸 가마도 지옥</strong><br><span class="text-sm text-slate-600">특이 지형을 활용한 테마파크형 상품 체험 (족욕 포함)</span>', icon: '♨️' },
-                        { time: '석식', desc: '호텔 뷔페 또는 가이세키', icon: '🍣' },
-                        { time: '숙박', desc: '벳푸 또는 스기노이 온천 호텔', icon: '🏨' },
+                        { time: '오전', desc: '호텔 조식 후 고코노에 이동 (약 1시간)', icon: '🚌' },
+                        { time: '10:00', desc: '<strong class="text-green-700">타테하라 습지</strong> 및 <strong class="text-green-700">꿈의 대현수교</strong><br><span class="text-sm text-slate-600">높이 777m 절경 조망</span>', icon: '🌉' },
+                        { time: '오후', desc: '유후인으로 이동 (약 1시간)', icon: '🚌' },
+                        { time: '13:00', desc: '<strong class="text-slate-900">긴린코 호수</strong> 및 <strong class="text-slate-900">민예촌 거리</strong><br><span class="text-sm text-slate-600">물안개 호수와 아기자기한 상점가 탐방</span>', icon: '🏞️' },
+                        { time: '중식', desc: '<strong class="text-slate-800">현지식</strong>', icon: '🍱' },
+                        { time: '오후', desc: '벳푸로 이동 (약 50분)', icon: '🚌' },
+                        { time: '16:00', desc: '<strong class="text-red-700">가마도 지옥</strong> (지옥온천순례)<br><span class="text-sm text-slate-600">족욕 체험 (라무네/타월 포함)</span>', icon: '♨️' },
+                        { time: '석식', desc: '<strong class="text-slate-800">호텔식 (뷔페)</strong>', icon: '🍣' },
+                        { time: '숙박', desc: '유카이 리조트 또는 동급 (온천욕)', icon: '🏨' },
                     ]
                 },
                 day3: {
-                    title: 'DAY 3: 6월 10일 / 6월 17일 (수) - 전통과 역사 보존',
+                    title: 'DAY 3: 6월 10일 / 6월 17일 (수) - 아소/다자이후/라라포트',
                     items: [
-                        { time: '오전', desc: '호텔 조식 후 히타로 이동', icon: '🚌' },
-                        { time: '10:00', desc: '<strong class="text-slate-900">히타 마메다마치</strong> (작은 교토)<br><span class="text-sm text-slate-600">전통 건조물 보존 지구 및 지역 특산물 활용 사례</span>', icon: '🏘️' },
-                        { time: '중식', desc: '<strong class="text-slate-800">현지식 (히타 야끼소바 또는 장어)</strong>', icon: '🍱' },
-                        { time: '오후', desc: '야나가와로 이동', icon: '🚌' },
-                        { time: '14:30', desc: '<strong class="text-sky-700">야나가와 뱃놀이</strong> 체험<br><span class="text-sm text-slate-600">수로를 활용한 관광 자원화 성공 모델</span>', icon: '🛶' },
-                        { time: '오후', desc: '후쿠오카로 이동', icon: '🚌' },
-                        { time: '석식', desc: '<strong class="text-slate-800">현지식</strong>', icon: '🍲' },
-                        { time: '숙박', desc: '후쿠오카 시내 특급 호텔', icon: '🏨' },
+                        { time: '오전', desc: '호텔 조식 후 아소로 이동 (약 1시간 30분)', icon: '🚌' },
+                        { time: '10:00', desc: '<strong class="text-slate-900">쿠사센리</strong> 및 <strong class="text-slate-900">나카다케 화구</strong><br><span class="text-sm text-slate-600">활화산 연기가 피어오르는 이중 화구 조망</span>', icon: '🌋' },
+                        { time: '11:30', desc: '<strong class="text-blue-600">이케야마 수원지</strong> 관광', icon: '💧' },
+                        { time: '중식', desc: '<strong class="text-slate-800">현지식</strong>', icon: '🍱' },
+                        { time: '오후', desc: '다자이후로 이동 (약 1시간)', icon: '🚌' },
+                        { time: '14:30', desc: '<strong class="text-red-800">다자이후 텐만구</strong><br><span class="text-sm text-slate-600">중요문화재 신사 및 참배길 탐방</span>', icon: '⛩️' },
+                        { time: '오후', desc: '후쿠오카 이동 후 <strong class="text-blue-700">면세점</strong> 및 <strong class="text-blue-700">라라포트</strong> 견학', icon: '🛍️' },
+                        { time: '석식', desc: '<strong class="text-slate-800">호텔식 (뷔페)</strong>', icon: '🍽️' },
+                        { time: '숙박', desc: '머큐어 무나가타 또는 동급 (온천욕)', icon: '🏨' },
                     ]
                 },
                 day4: {
-                    title: 'DAY 4: 6월 11일 / 6월 18일 (목) - 도시 재생 및 상권 벤치마킹',
+                    title: 'DAY 4: 6월 11일 / 6월 18일 (목) - 시모노세키/야마구치/기타큐슈',
                     items: [
-                        { time: '오전', desc: '호텔 조식 후 벤치마킹 일정', icon: '🚌' },
-                        { time: '10:30', desc: '<strong class="text-blue-700">라라포트 후쿠오카</strong><br><span class="text-sm text-slate-600">복합 쇼핑몰의 집객 콘텐츠(건담 등) 및 공간 구성 확인</span>', icon: '🤖' },
-                        { time: '중식', desc: '<strong class="text-slate-800">자유식 (푸드코트 벤치마킹)</strong>', icon: '🍔' },
-                        { time: '14:00', desc: '<strong class="text-sky-700">캐널시티 하카타</strong><br><span class="text-sm text-slate-600">운하를 활용한 도심 재생 성공 모델 견학</span>', icon: '🏙️' },
-                        { time: '16:00', desc: '<strong class="text-slate-900">하카타역/텐진 지구</strong> 상권 시찰', icon: '🚶' },
-                        { time: '석식', desc: '<strong class="text-slate-800">현지식 (야키니쿠 등)</strong>', icon: '🥩' },
-                        { time: '숙박', desc: '후쿠오카 시내 특급 호텔', icon: '🏨' },
+                        { time: '오전', desc: '호텔 조식 후 기타큐슈 이동 (약 40분)', icon: '🚌' },
+                        { time: '09:30', desc: '<strong class="text-blue-700">가라토 시장</strong> (시모노세키)<br><span class="text-sm text-slate-600">활기찬 어시장 현장 견학</span>', icon: '🐟' },
+                        { time: '10:30', desc: '<strong class="text-red-700">아카마 신궁</strong> 및 <strong class="text-slate-900">조선통신사 상륙기념비</strong>', icon: '⛩️' },
+                        { time: '오후', desc: '미네로 이동 (약 1시간)', icon: '🚌' },
+                        { time: '중식', desc: '<strong class="text-slate-800">현지식</strong>', icon: '🍱' },
+                        { time: '14:00', desc: '<strong class="text-green-700">아키요시다이</strong> (카르스트) 및 <strong class="text-slate-900">아키요시 동굴</strong><br><span class="text-sm text-slate-600">동양 최대의 석회동굴 탐방</span>', icon: '🕳️' },
+                        { time: '오후', desc: '기타큐슈 이동 -> <strong class="text-slate-900">탄가 재래시장</strong> (고쿠라)', icon: '🚶' },
+                        { time: '석식', desc: '<strong class="text-slate-800">호텔식 (뷔페)</strong>', icon: '🍽️' },
+                        { time: '숙박', desc: '머큐어 무나가타 또는 동급 (온천욕)', icon: '🏨' },
                     ]
                 },
                 day5: {
                     title: 'DAY 5: 6월 12일 / 6월 19일 (금) - 귀국',
                     items: [
                         { time: '오전', desc: '호텔 조식 후 공항으로 이동', icon: '🚌' },
-                        { time: '10:00', desc: '면세점 및 공항 시설 견학', icon: '🛍️' },
-                        { time: '11:40', desc: '후쿠오카 국제공항 출발 (KE788)', icon: '✈️' },
-                        { time: '13:15', desc: '인천 국제공항 도착 및 해산', icon: '🛬' },
+                        { time: '10:35', desc: '후쿠오카 국제공항 출발 (KE788)', icon: '✈️' },
+                        { time: '12:00', desc: '인천 국제공항 도착 및 해산', icon: '🛬' },
                     ]
                 }
             };
@@ -645,9 +738,9 @@
                     content += `
                         <li class="flex items-start group">
                             <span class="text-3xl mr-5 group-hover:scale-110 transition-transform">${item.icon}</span>
-                            <div>
+                            <div class="w-full">
                                 <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded mb-1">${item.time}</span>
-                                <p class="text-slate-700 text-lg leading-relaxed">${item.desc}</p>
+                                <div class="text-slate-700 text-lg leading-relaxed">${item.desc}</div>
                             </div>
                         </li>`;
                 });
